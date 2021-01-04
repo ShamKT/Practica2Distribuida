@@ -1,11 +1,22 @@
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Objects;
 
-public class Contact {
+/**
+ * Clase que modela el contacto de un usuario.
+ * Almacena el puerto de su servidor, su nombre y un hashmap con sus contactos.
+ *
+ * @author Orlando Ledesma Rincon
+ */
+public class Contact implements Serializable {
+
+    private static final long serialVersionUID = -3108864461492601916L;
 
     private final int port;
     private String name;
-    private volatile LinkedList<Contact> contacts = new LinkedList<>();
+    private volatile HashMap<String, Contact> contacts = new HashMap<>();
+
 
     public Contact(int port, String name) {
         this.port = port;
@@ -24,9 +35,10 @@ public class Contact {
         this.name = name;
     }
 
-    public LinkedList<Contact> getContacts() {
+    public HashMap<String, Contact> getContacts() {
         return contacts;
     }
+
 
     @Override
     public boolean equals(Object o) {
